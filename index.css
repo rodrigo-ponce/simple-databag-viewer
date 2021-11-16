@@ -1,0 +1,93 @@
+* {
+    font-family: Helvetica, Arial, sans-serif;
+  }
+  
+  body {
+    padding: 60px;
+    background-color: rgb(65, 62, 62);
+  }
+
+  h1 {
+      text-align: center;
+      color: rgb(230, 222, 222);
+  }
+  form {
+      width: 80%;
+      display: inline-block;
+  }
+  #search_container {
+      text-align: center;
+      align-content: center;
+  }
+  #content {
+    text-align: center;
+    align-content: center;
+}
+  #input_search {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    align-content: center;
+  }
+
+
+  #new_component_container {
+    color: rgb(230, 222, 222);
+    padding: 12px 20px;
+  }
+
+
+
+
+
+  
+  .item {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid rgb(190, 209, 197);
+    border-radius: 5px;
+    box-sizing: border-box;
+    grid-area: main;
+  }
+
+  .item_title {
+    color: rgb(230, 222, 222);
+    grid-area: hd;
+    font-size: 1.5em;
+    text-align: left;
+    font-weight: bold;
+  }
+  .item_description {
+    color: rgb(230, 222, 222);
+    grid-area: hd;
+    font-size: 1em;
+    text-align: left;
+    font-style: oblique;
+  }
+  .content {
+    grid-area: main;
+ }
+ .parameters {
+    text-align: left;
+ }
+ .name_span{
+    background-color: #04AA6D;
+    color: rgb(230, 222, 222);
+    padding-left: 2em;
+    padding-right: 2em;
+    border-radius: 6px;
+    
+ }
+ .value_span{
+    background-color: #b2c7bf;
+    color: rgb(24, 23, 23);
+    padding-left: 2em;
+    padding-right: 2em;
+    border-radius: 6px;
+ }

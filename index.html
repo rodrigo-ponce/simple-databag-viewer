@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Component Navigator</title>
+</head>
+
+<body>
+    <div>
+        <h1>Component Navigator</h1>
+    </div>
+    <hr>
+
+    <hr>
+    <div id="search_container">
+        <form>
+            <input type="text" id="input_search" name="input_search">
+        </form>
+    </div>
+    <hr>
+    <div id="new_component_container">
+        <form>
+            <label for="component_name">name: </label>
+            <input type="text" id="component_name" name="component_name">
+            <br>
+            <label for="component_desc">description: </label>
+            <input type="text" id="component_desc" name="component_desc">
+            <div id="parameters_container">
+                <div class="new_parameter_container">
+                    <label for="parameter_key">parameter key: </label>
+                    <input type="text" id="parameter_key" name="parameter_key" class="parameter_key">
+                    <label for="parameter_value">parameter value: </label>
+                    <input type="text" id="parameter_value" name="parameter_value" class="parameter_value">
+                    <input type="checkbox" id="copiable" name="copiable" class="copiable">
+                    <label for="copiable"> copiable</label>
+                    <input type="checkbox" id="isALink" name="isALink" class="isALink">
+                    <label for="isALink"> is a link</label>
+                </div>
+            </div>
+            <button type="button" onclick="addedAnotherParameter()"> added another parameter</button>
+            <button type="button" onclick="saveNewInformation()"> save </button>
+            <button type="button" onclick="download()"> download </button>
+        </form>
+    </div>
+    <a download="data.json" id="downloadlink" style="display: none">Download</a>
+    <div id="alert_container"></div>
+    <div id="content"></div>
+    <textarea id="hidenTextArea" style="display:none;"></textarea>
+    <script type="text/javascript" src="data.json"></script>
+    <script type="text/javascript" src="index.js"></script>
+</body>
+
+</html>
