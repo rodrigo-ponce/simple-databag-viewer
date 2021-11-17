@@ -6,6 +6,9 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
+  test:
+    name: Test - Unit and Integration
+    runs-on: ubuntu-latest
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest
