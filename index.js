@@ -1,8 +1,8 @@
 
 window.addEventListener('load', function () {
-    document.querySelector('#input_search').addEventListener("keyup", 
-    function () { searchContent() }, false);
-    readFile();
+    document.querySelector('#input_search').addEventListener("keyup",
+        function () { searchContent() }, false);
+    readDefaultFile();
 })
 
 function showData(data) {
@@ -27,7 +27,7 @@ function showData(data) {
             nameSpan.classList.add("name_span");
             let valueSpan = document.createElement("span");
             valueSpan.classList.add("value_span");
-            if(param.copy){
+            if (param.copy) {
                 valueSpan.addEventListener("click", function () { copyToClipboard(param.value) }, false);
             }
             nameSpan.innerHTML = param.name;
@@ -48,7 +48,7 @@ function copyToClipboard(valueToCopy) {
     document.execCommand("Copy");
     console.log("copied: " + valueToCopy);
     textArea.remove();
-    alert( "copied" );
+    alert("copied");
 }
 
 function addedAnotherParameter() {
@@ -107,22 +107,6 @@ let GetFileObjectFromURL = function (filePathOrUrl, convertBlob) {
         convertBlob(blobToFile(blob, 'data.json'));
     });
 };
-function readFile(dataText) {
-    let FileURL = "data.json";
-    GetFileObjectFromURL(FileURL, function (fileObject) {
-        let reader = new FileReader();
-        reader.onload = function () {
-            let text = reader.result;
-            if (dataText === undefined) {
-                document.querySelector('#hidenTextArea').value = ''; 
-                showData(JSON.parse(text));
-            } else if (dataText.localeCompare('hiden') === 0) {
-                document.querySelector('#hidenTextArea').value = text;
-            }
-        };
-        reader.readAsText(fileObject);
-    });
-}
 
 function saveNewInformation() {
     let componentName = document.getElementById('component_name').value;
@@ -153,7 +137,7 @@ function saveNewInformation() {
     cleanInputs();
 }
 
-function download(){
+function download() {
     let link = document.querySelector('#downloadlink');
     link.href = makeTextFile(document.querySelector('#hidenTextArea').value);
     link.style.display = 'block';
@@ -174,18 +158,46 @@ function cleanInputs() {
     newComponentDiv.querySelectorAll('input').forEach(item => item.checked = false);
 }
 
-function searchContent(){
+function searchContent() {
     let input = document.querySelector('#input_search').value.trim();
     let contentDiv = document.querySelector('#content');
     contentDiv.querySelectorAll('.item')
-    .forEach(item => {
-        if(item.querySelector('.item_title').innerHTML.includes(input)){
-            item.style.display = '';
-        }else{
-            item.style.display = 'none';
-        }
-    } );
+        .forEach(item => {
+            if (item.querySelector('.item_title').innerHTML.includes(input)) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
 }
 
+function readFile(dataText) {
+    let FileURL = "data.json";
+    GetFileObjectFromURL(FileURL, function (fileObject) {
+        let reader = new FileReader();
+        reader.onload = function () {
+            let text = reader.result;
+            if (dataText === undefined) {
+                document.querySelector('#hidenTextArea').value = '';
+                showData(JSON.parse(text));
+            } else if (dataText.localeCompare('hiden') === 0) {
+                document.querySelector('#hidenTextArea').value = text;
+            }
+        };
+        reader.readAsText(fileObject);
+    });
+}
 
-
+function readDefaultFile() {
+    const fileSelector = document.getElementById('file_selector');
+    fileSelector.addEventListener('change', (event) => {
+        const fileList = event.target.files;
+        let reader = new FileReader();
+        reader.onload = function () {
+            let text = reader.result;
+            document.querySelector('#hidenTextArea').value = '';
+            showData(JSON.parse(text));
+        };
+        reader.readAsText(fileList[0]);
+    });
+}

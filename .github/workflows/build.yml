@@ -2,7 +2,7 @@ name: Build
 on:
   push:
     branches:
-      - [ feature/create_base_project ]
+      - [ "feature/create_base_project" ]
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
